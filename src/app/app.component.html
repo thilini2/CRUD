@@ -1,0 +1,52 @@
+<!-- Toolbar -->
+<div class="container">
+  <h4>Angular CRUD Operation</h4>
+  <div class="row">
+    <div class="col card mt-4 p-4">
+      <h3 class="text-center">Add Employee</h3>
+      <form (ngSubmit)="addEmployee()" #employeeForm="ngForm">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="newEmployee.name" required>
+        </div>
+        <div class="form-group">
+          <label for="designation">Designation</label>
+          <input type="text" class="form-control" id="designation" name="designation" [(ngModel)]="newEmployee.designation" required>
+        </div>
+        <div class="form-group">
+          <label for="salary">Salary</label>
+          <input type="number" class="form-control" id="salary" name="salary" [(ngModel)]="newEmployee.salary" required>
+        </div>
+        <button type="reset" class="btn btn-outline-danger mt-3 mx-3 p-3 px-5">Reset</button>
+        <button type="submit" class="btn btn-primary mt-3 mx-3 p-3 px-5">Save</button>
+      </form>
+    </div>
+    <div class="col card mx-3 mt-4 p-4">
+      <h3 class="text-center">Employee List</h3>
+      <table class="table table-hover">
+        <thead>
+          <tr> 
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>{{ employee.salary }}</td>
+            <td><button class="btn btn-sm btn-info mx-1" (click)="editEmployee(employee)"><i class="fa fa-edit"></i></button>
+                <button class="btn btn-sm btn-danger mx-1" (click)="deleteEmployee(employee)"><i class="fa fa-trash"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
